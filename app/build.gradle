@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'org.pocketworkstation.pckeyboard'
+    namespace 'kr.jcb1ee.hackerskeyboard2'
     compileSdkVersion 34
     defaultConfig {
-        applicationId 'org.pocketworkstation.pckeyboard'
+        applicationId 'kr.jcb1ee.hackerskeyboard2'
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1041001

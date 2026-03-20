@@ -1,5 +1,7 @@
 # ninja log v5
-1	38	1774007971450811683	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/dictionary.cpp.o	df3aec3835e11d41
-1	38	1774007971451603354	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/org_pocketworkstation_pckeyboard_BinaryDictionary.cpp.o	a9122e51a29c7392
-0	38	1774007971451537770	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/char_utils.cpp.o	fe6b0239ebc72cfe
 39	92	1774007971494344655	../../../../build/intermediates/cxx/Debug/6xt2i1hj/obj/x86_64/libjni_pckeyboard.so	f2525613ba6aab8f
+0	38	1774007971451537770	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/char_utils.cpp.o	fe6b0239ebc72cfe
+1	38	1774007971451603354	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/org_pocketworkstation_pckeyboard_BinaryDictionary.cpp.o	a9122e51a29c7392
+1	38	1774007971450811683	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/dictionary.cpp.o	df3aec3835e11d41
+0	37	1774012937216739244	CMakeFiles/jni_pckeyboard.dir/src/main/cpp/kr_jcb1ee_hackerskeyboard2_BinaryDictionary.cpp.o	1debe76164ebca1b
+37	98	1774012937265704146	../../../../build/intermediates/cxx/Debug/6xt2i1hj/obj/x86_64/libjni_pckeyboard.so	86693547fb923ea8

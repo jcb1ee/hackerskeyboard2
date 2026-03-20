@@ -1,8 +1,8 @@
 [
 {
   "directory": "/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/arm64-v8a",
-  "command": "/Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android21 --sysroot=/Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Djni_pckeyboard_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles/jni_pckeyboard.dir/src/main/cpp/org_pocketworkstation_pckeyboard_BinaryDictionary.cpp.o -c /Users/jl/Developer/hackerskeyboard2/app/src/main/cpp/org_pocketworkstation_pckeyboard_BinaryDictionary.cpp",
-  "file": "/Users/jl/Developer/hackerskeyboard2/app/src/main/cpp/org_pocketworkstation_pckeyboard_BinaryDictionary.cpp"
+  "command": "/Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android21 --sysroot=/Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Djni_pckeyboard_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles/jni_pckeyboard.dir/src/main/cpp/kr_jcb1ee_hackerskeyboard2_BinaryDictionary.cpp.o -c /Users/jl/Developer/hackerskeyboard2/app/src/main/cpp/kr_jcb1ee_hackerskeyboard2_BinaryDictionary.cpp",
+  "file": "/Users/jl/Developer/hackerskeyboard2/app/src/main/cpp/kr_jcb1ee_hackerskeyboard2_BinaryDictionary.cpp"
 },
 {
   "directory": "/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/arm64-v8a",
