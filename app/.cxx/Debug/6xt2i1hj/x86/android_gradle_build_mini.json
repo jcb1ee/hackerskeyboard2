@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/jl/Developer/hackerskeyboard2/app/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/jl/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/jl/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "jni_pckeyboard::@6890427a1f51a3e7e1df": {
+      "artifactName": "jni_pckeyboard",
+      "abi": "x86",
+      "output": "/Users/jl/Developer/hackerskeyboard2/app/build/intermediates/cxx/Debug/6xt2i1hj/obj/x86/libjni_pckeyboard.so",
+      "runtimeFiles": []
+    }
+  }
+}

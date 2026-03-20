@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="org.pocketworkstation.pckeyboard">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
@@ -18,6 +17,7 @@
 
         <service android:name="LatinIME"
                 android:label="@string/english_ime_name"
+                android:exported="false"
                 android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
@@ -25,14 +25,18 @@
             <meta-data android:name="android.view.im" android:resource="@xml/method" />
         </service>
 
-        <activity android:name="Main" android:label="Hacker's Keyboard">
+        <activity android:name="Main"
+                android:label="Hacker's Keyboard"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="LatinIMESettings" android:label="@string/english_ime_settings">
+        <activity android:name="LatinIMESettings"
+                android:label="@string/english_ime_settings"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="org.pocketworkstation.pckeyboard.SETTINGS"/>
@@ -41,7 +45,8 @@
         </activity>
 
         <activity android:name="InputLanguageSelection"
-                android:label="@string/language_selection_title">
+                android:label="@string/language_selection_title"
+                android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="org.pocketworkstation.pckeyboard.INPUT_LANGUAGE_SELECTION"/>
@@ -50,16 +55,18 @@
         </activity>
 
         <activity android:name="PrefScreenActions"
-                android:label="@string/pref_screen_actions_title">
+                android:label="@string/pref_screen_actions_title"
+                android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="org.pocketworkstation.pckeyboard.PREFS_ACTIONS"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-            
+
         <activity android:name="PrefScreenView"
-                android:label="@string/pref_screen_actions_title">
+                android:label="@string/pref_screen_actions_title"
+                android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="org.pocketworkstation.pckeyboard.PREFS_VIEW"/>
@@ -68,7 +75,8 @@
         </activity>
 
         <activity android:name="PrefScreenFeedback"
-                android:label="@string/pref_screen_feedback_title">
+                android:label="@string/pref_screen_feedback_title"
+                android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="org.pocketworkstation.pckeyboard.PREFS_FEEDBACK"/>

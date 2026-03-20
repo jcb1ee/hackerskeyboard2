@@ -9,5 +9,8 @@
 .DS_Store
 /build
 /captures
-gradle
 .externalNativeBuild
+.claude
+/issues
+/PLAN.md
+/PRD.md

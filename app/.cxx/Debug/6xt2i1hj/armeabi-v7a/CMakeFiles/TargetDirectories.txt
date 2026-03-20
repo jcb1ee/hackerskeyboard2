@@ -1,0 +1,3 @@
+/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/armeabi-v7a/CMakeFiles/jni_pckeyboard.dir
+/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/armeabi-v7a/CMakeFiles/rebuild_cache.dir
