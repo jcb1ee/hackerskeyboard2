@@ -27,6 +27,7 @@
 
         <activity android:name="Main"
                 android:label="Hacker's Keyboard 2"
+                android:hardwareAccelerated="true"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -37,6 +38,7 @@
         <activity android:name="LatinIMESettings"
                 android:label="@string/english_ime_settings"
                 android:theme="@style/Theme.AppCompat.Light"
+                android:hardwareAccelerated="true"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -48,6 +50,7 @@
         <activity android:name="InputLanguageSelection"
                 android:label="@string/language_selection_title"
                 android:theme="@style/Theme.AppCompat.Light"
+                android:hardwareAccelerated="true"
                 android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -59,6 +62,7 @@
         <activity android:name="PrefScreenActions"
                 android:label="@string/pref_screen_actions_title"
                 android:theme="@style/Theme.AppCompat.Light"
+                android:hardwareAccelerated="true"
                 android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -70,6 +74,7 @@
         <activity android:name="PrefScreenView"
                 android:label="@string/pref_screen_actions_title"
                 android:theme="@style/Theme.AppCompat.Light"
+                android:hardwareAccelerated="true"
                 android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -81,6 +86,7 @@
         <activity android:name="PrefScreenFeedback"
                 android:label="@string/pref_screen_feedback_title"
                 android:theme="@style/Theme.AppCompat.Light"
+                android:hardwareAccelerated="true"
                 android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
