@@ -10,7 +10,9 @@
 /build
 /captures
 .externalNativeBuild
+app/.cxx/
 .claude
 /issues
 /PLAN.md
 /PRD.md
+app/src/androidTest/
