@@ -1465,7 +1465,15 @@ public class LatinIME extends InputMethodService implements
             // Input method selector is available as a button in the soft key area, so just launch
             // HK settings directly. This also works around the alert dialog being clipped
             // in Android O.
-            startActivity(new Intent(this, LatinIMESettings.class));
+            // Defer to avoid infinite recursion: launchSettings() calls handleClose() →
+            // dismissPopupKeyboard() → releaseAllPointersExcept() which re-triggers onKey()
+            // for any still-queued pointer, leading to a StackOverflowError.
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    launchSettings();
+                }
+            });
         } else {
             // Show an options menu with choices to change input method or open HK settings.
             if (!isShowingOptionDialog()) {
@@ -3369,7 +3377,7 @@ public class LatinIME extends InputMethodService implements
     }
 
     protected void launchSettings(
-            Class<? extends PreferenceActivity> settingsClass) {
+            Class<? extends android.app.Activity> settingsClass) {
         handleClose();
         Intent intent = new Intent();
         intent.setClass(LatinIME.this, settingsClass);

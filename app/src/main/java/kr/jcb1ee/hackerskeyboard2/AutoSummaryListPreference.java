@@ -4,7 +4,7 @@
 package kr.jcb1ee.hackerskeyboard2;
 
 import android.content.Context;
-import android.preference.ListPreference;
+import androidx.preference.ListPreference;
 import android.util.AttributeSet;
 import android.util.Log;
 

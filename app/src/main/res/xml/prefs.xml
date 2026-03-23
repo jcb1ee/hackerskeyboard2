@@ -75,7 +75,9 @@
     <PreferenceScreen
             android:title="@string/pref_screen_view_title"
             android:summary="@string/pref_screen_view_title_summary">
-        <intent android:action="kr.jcb1ee.hackerskeyboard2.PREFS_VIEW"/>
+        <intent android:action="kr.jcb1ee.hackerskeyboard2.PREFS_VIEW"
+                android:targetPackage="kr.jcb1ee.hackerskeyboard2"
+                android:targetClass="kr.jcb1ee.hackerskeyboard2.PrefScreenView"/>
     </PreferenceScreen>
 
     </PreferenceCategory>
@@ -106,7 +108,9 @@
             android:title="@string/language_selection_title"
             android:summary="@string/language_selection_summary">
         <intent
-                android:action="kr.jcb1ee.hackerskeyboard2.INPUT_LANGUAGE_SELECTION"/>
+                android:action="kr.jcb1ee.hackerskeyboard2.INPUT_LANGUAGE_SELECTION"
+                android:targetPackage="kr.jcb1ee.hackerskeyboard2"
+                android:targetClass="kr.jcb1ee.hackerskeyboard2.InputLanguageSelection"/>
     </PreferenceScreen>
     </PreferenceCategory>
 
@@ -143,13 +147,17 @@
             android:title="@string/pref_screen_feedback_title"
             android:summary="@string/pref_screen_feedback_title_summary">
         <intent
-                android:action="kr.jcb1ee.hackerskeyboard2.PREFS_FEEDBACK"/>
+                android:action="kr.jcb1ee.hackerskeyboard2.PREFS_FEEDBACK"
+                android:targetPackage="kr.jcb1ee.hackerskeyboard2"
+                android:targetClass="kr.jcb1ee.hackerskeyboard2.PrefScreenFeedback"/>
     </PreferenceScreen>
 
     <PreferenceScreen
             android:title="@string/pref_screen_actions_title"
             android:summary="@string/pref_screen_actions_title_summary">
-        <intent android:action="kr.jcb1ee.hackerskeyboard2.PREFS_ACTIONS"/>
+        <intent android:action="kr.jcb1ee.hackerskeyboard2.PREFS_ACTIONS"
+                android:targetPackage="kr.jcb1ee.hackerskeyboard2"
+                android:targetClass="kr.jcb1ee.hackerskeyboard2.PrefScreenActions"/>
     </PreferenceScreen>
 
     <kr.jcb1ee.hackerskeyboard2.AutoSummaryListPreference
@@ -262,7 +270,7 @@
 
     <PreferenceCategory
             android:title="@string/title_input_mode_settings"
-            android:key="graphics_settings">
+            android:key="input_mode_settings">
 
     <CheckBoxPreference
             android:key="recorrection_enabled"

@@ -1,7 +1,7 @@
 package kr.jcb1ee.hackerskeyboard2;
 
 import android.content.Context;
-import android.preference.EditTextPreference;
+import androidx.preference.EditTextPreference;
 import android.util.AttributeSet;
 
 public class AutoSummaryEditTextPreference extends EditTextPreference {

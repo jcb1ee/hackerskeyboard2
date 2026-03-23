@@ -19,41 +19,64 @@ package kr.jcb1ee.hackerskeyboard2;
 import android.app.backup.BackupManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
 
-public class PrefScreenView extends PreferenceActivity
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceFragmentCompat;
 
-    private ListPreference mRenderModePreference;
+public class PrefScreenView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.prefs_view);
-        SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
-        prefs.registerOnSharedPreferenceChangeListener(this);
-        mRenderModePreference = (ListPreference) findPreference(LatinIME.PREF_RENDER_MODE);
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
     }
 
-    @Override
-    protected void onDestroy() {
-        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(
-                this);
-        super.onDestroy();
-    }
+    public static class SettingsFragment extends PreferenceFragmentCompat
+            implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        (new BackupManager(this)).dataChanged();
-    }
-    
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (LatinKeyboardBaseView.sSetRenderMode == null) {
-            mRenderModePreference.setEnabled(false);
-            mRenderModePreference.setSummary(R.string.render_mode_unavailable);
+        private ListPreference mRenderModePreference;
+
+        @Override
+        public void onDisplayPreferenceDialog(androidx.preference.Preference preference) {
+            if (preference instanceof SeekBarPreference) {
+                SeekBarPreferenceDialogFragment f =
+                        SeekBarPreferenceDialogFragment.newInstance(preference.getKey());
+                f.setTargetFragment(this, 0);
+                f.show(getParentFragmentManager(), "SeekBarPreferenceDialogFragment");
+            } else {
+                super.onDisplayPreferenceDialog(preference);
+            }
+        }
+
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            addPreferencesFromResource(R.xml.prefs_view);
+            SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
+            prefs.registerOnSharedPreferenceChangeListener(this);
+            mRenderModePreference = (ListPreference) findPreference(LatinIME.PREF_RENDER_MODE);
+        }
+
+        @Override
+        public void onDestroy() {
+            getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(
+                    this);
+            super.onDestroy();
+        }
+
+        public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+            (new BackupManager(requireContext())).dataChanged();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            if (LatinKeyboardBaseView.sSetRenderMode == null) {
+                mRenderModePreference.setEnabled(false);
+                mRenderModePreference.setSummary(R.string.render_mode_unavailable);
+            }
         }
     }
 }
