@@ -80,7 +80,7 @@ build CMakeFiles/jni_pckeyboard.dir/src/main/cpp/char_utils.cpp.o: CXX_COMPILER_
 
 build ../../../../build/intermediates/cxx/Debug/6xt2i1hj/obj/arm64-v8a/libjni_pckeyboard.so: CXX_SHARED_LIBRARY_LINKER__jni_pckeyboard_Debug CMakeFiles/jni_pckeyboard.dir/src/main/cpp/kr_jcb1ee_hackerskeyboard2_BinaryDictionary.cpp.o CMakeFiles/jni_pckeyboard.dir/src/main/cpp/dictionary.cpp.o CMakeFiles/jni_pckeyboard.dir/src/main/cpp/char_utils.cpp.o | /Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so
   LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info
-  LINK_FLAGS = -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--gc-sections -Wl,--no-undefined -Qunused-arguments
+  LINK_FLAGS = -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--gc-sections -Wl,--no-undefined -Qunused-arguments    -Wl,-z,max-page-size=16384
   LINK_LIBRARIES = /Users/jl/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so  -latomic -lm
   OBJECT_DIR = CMakeFiles/jni_pckeyboard.dir
   POST_BUILD = :

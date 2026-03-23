@@ -7,6 +7,18 @@
     <uses-feature android:name="android.hardware.faketouch" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
+    <!-- Android 11+ package visibility: declare intents used to discover plugin dictionaries.
+         Without this, queryBroadcastReceivers() and queryIntentActivities() return empty
+         results for third-party packages on API 30+. -->
+    <queries>
+        <intent>
+            <action android:name="com.menny.android.anysoftkeyboard.DICTIONARY" />
+        </intent>
+        <intent>
+            <action android:name="org.pocketworkstation.DICT" />
+        </intent>
+    </queries>
+
     <application android:label="@string/english_ime_name"
             android:allowBackup="true"
             android:backupAgent="LatinIMEBackupAgent"
