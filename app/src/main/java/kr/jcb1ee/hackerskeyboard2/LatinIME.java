@@ -263,6 +263,9 @@ public class LatinIME extends InputMethodService implements
     private ComposeSequence mComposeBuffer = new ComposeSequence(this);
     private ComposeSequence mDeadAccentBuffer = new DeadAccentSequence(this);
 
+    // Hangul (Korean) syllable composition
+    private final HangulComposer mHangulComposer = new HangulComposer();
+
     private AudioManager mAudioManager;
     // Align sound effect volume on music volume
     private final float FX_VOLUME = -1.0f;
@@ -949,6 +952,8 @@ public class LatinIME extends InputMethodService implements
     @Override
     public void onFinishInput() {
         super.onFinishInput();
+        commitHangulComposing();
+        mHangulComposer.reset();
 
         onAutoCompletionStateChanged(false);
 
@@ -1453,6 +1458,56 @@ public class LatinIME extends InputMethodService implements
         } else {
             return false;
         }
+    }
+
+    /** Returns true when the current input locale is Korean (ko). */
+    private boolean isHangulMode() {
+        String lang = mLanguageSwitcher.getInputLanguage();
+        return lang != null && lang.startsWith("ko");
+    }
+
+    /**
+     * Returns true for Hangul Compatibility Jamo codepoints (U+3131–U+3163).
+     * These are the characters output by the Korean keyboard layout.
+     */
+    private static boolean isHangulJamo(int code) {
+        return code >= 0x3131 && code <= 0x3163;
+    }
+
+    /**
+     * Commits any in-progress Hangul syllable to the editor without starting a new one.
+     * Called when a non-Jamo character is typed or special actions occur while composing.
+     */
+    private void commitHangulComposing() {
+        if (!mHangulComposer.isComposing()) return;
+        InputConnection ic = getCurrentInputConnection();
+        if (ic != null) {
+            ic.commitText(mHangulComposer.getComposing(), 1);
+        }
+        mHangulComposer.reset();
+    }
+
+    /**
+     * Handles a Hangul Jamo keypress by routing it through the syllable composer.
+     * The composer may return text to commit (a completed syllable) plus new composing text.
+     */
+    private void handleHangulCharacter(int primaryCode) {
+        InputConnection ic = getCurrentInputConnection();
+        if (ic == null) return;
+
+        HangulComposer.Result result = mHangulComposer.compose(primaryCode);
+
+        ic.beginBatchEdit();
+        if (result.commit.length() > 0) {
+            ic.commitText(result.commit, 1);
+        }
+        if (result.composing.length() > 0) {
+            ic.setComposingText(result.composing, 1);
+        } else {
+            ic.finishComposingText();
+        }
+        ic.endBatchEdit();
+        updateShiftKeyState(getCurrentInputEditorInfo());
     }
 
     private void showInputMethodPicker() {
@@ -2067,6 +2122,14 @@ public class LatinIME extends InputMethodService implements
             sendSpecialKey(-primaryCode);
             break;
         default:
+            if (isHangulMode() && isHangulJamo(primaryCode)) {
+                handleHangulCharacter(primaryCode);
+                break;
+            }
+            // Commit any pending Hangul composition before handling a non-Jamo character
+            if (isHangulMode() && mHangulComposer.isComposing()) {
+                commitHangulComposing();
+            }
             if (!mComposeMode && mDeadKeysActive && Character.getType(primaryCode) == Character.NON_SPACING_MARK) {
                 //Log.i(TAG, "possible dead character: " + primaryCode);
                 if (!mDeadAccentBuffer.execute(primaryCode)) {
@@ -2137,6 +2200,20 @@ public class LatinIME extends InputMethodService implements
         InputConnection ic = getCurrentInputConnection();
         if (ic == null)
             return;
+
+        // Hangul composition: backspace steps back through the syllable being composed
+        if (isHangulMode() && mHangulComposer.isComposing()) {
+            String newComposing = mHangulComposer.backspace();
+            ic.beginBatchEdit();
+            if (newComposing.isEmpty()) {
+                ic.finishComposingText();
+            } else {
+                ic.setComposingText(newComposing, 1);
+            }
+            ic.endBatchEdit();
+            postUpdateShiftKeyState();
+            return;
+        }
 
         ic.beginBatchEdit();
 
@@ -2914,6 +2991,8 @@ public class LatinIME extends InputMethodService implements
     }
 
     void toggleLanguage(boolean reset, boolean next) {
+        commitHangulComposing();
+        mHangulComposer.reset();
         if (reset) {
             mLanguageSwitcher.reset();
         } else {
