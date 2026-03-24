@@ -1,0 +1,19 @@
+Hacker's Keyboard 2 is a full-featured soft keyboard designed for power users, developers, and anyone who wants a real keyboard experience on their Android device.
+
+**Key features:**
+
+• 5-row layout with a dedicated number row — no long-pressing for digits
+• Ctrl, Alt, and Meta modifier keys with multi-touch support — perfect for terminal use
+• Arrow keys and navigation keys (Tab, Esc, Page Up/Down, Home, End)
+• Korean Dubeolsik (두벌식) Hangul input with full syllable composition
+• 40+ language layouts including QWERTY, AZERTY, QWERTZ, Dvorak, and more
+• Works great with ConnectBot, Termux, and other terminal apps
+• Plugin dictionary support
+
+**Supported languages:**
+Armenian, Arabic, Bulgarian, Croatian, Czech, Danish, Dutch, English (QWERTY, Dvorak, Carpalx), Finnish, French, German (QWERTZ, Neo2), Greek, Hebrew, Hungarian, Italian, Korean, Lao, Norwegian, Persian, Polish, Portuguese, Romanian, Russian (standard and phonetic), Serbian, Slovak, Slovenian, Spanish, Swedish, Tamil, Thai, Turkish, Ukrainian, and more.
+
+**Updated for modern Android:**
+Fully compatible with Android 5 through Android 14 (API 21–34). Fixes all Android 12+ compatibility issues from the original Hacker's Keyboard.
+
+Based on the open-source AOSP Gingerbread keyboard. Source code available on GitHub under the Apache 2.0 license.

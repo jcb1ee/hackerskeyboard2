@@ -1,0 +1,37 @@
+Categories:
+  - System
+
+License: Apache-2.0
+
+# TODO: replace <owner> with your GitHub username before submitting to fdroiddata
+SourceCode: https://github.com/<owner>/hackerskeyboard2
+IssueTracker: https://github.com/<owner>/hackerskeyboard2/issues
+
+Summary: Full 5-row keyboard with Ctrl/Alt keys and Korean Hangul input
+
+Description: |-
+  Hacker's Keyboard 2 is a full-featured soft keyboard for power users,
+  developers, and anyone who wants a real keyboard on their Android device.
+
+  Features a 5-row layout with a dedicated number row, Ctrl/Alt/Meta modifier
+  keys with multi-touch, arrow and navigation keys, and Korean Dubeolsik
+  (두벌식) Hangul input with full syllable composition.
+
+  Supports 40+ language layouts including QWERTY, AZERTY, QWERTZ, Dvorak,
+  and scripts such as Arabic, Cyrillic, Greek, Hebrew, and Hangul.
+
+  Works great with ConnectBot and Termux. Based on the AOSP Gingerbread
+  keyboard, updated for Android 5–14 (API 21–34).
+
+Builds:
+  - versionName: v1.41.1
+    versionCode: 1041001
+    # TODO: replace with the actual git tag or commit hash
+    commit: v1.41.1
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: v1.41.1
+CurrentVersionCode: 1041001

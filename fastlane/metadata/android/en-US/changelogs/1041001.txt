@@ -1,0 +1,5 @@
+• Updated for Android 12–14 compatibility (targetSdk 34)
+• Migrated to AndroidX
+• Fixed PendingIntent and BroadcastReceiver flags for Android 12+
+• Migrated settings screens to PreferenceFragmentCompat
+• Added Korean (한국어) Dubeolsik Hangul input with full syllable composition

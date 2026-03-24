@@ -1,4 +1,6 @@
 *.iml
+*.jks
+*.keystore
 .gradle
 /local.properties
 /.idea
@@ -16,3 +18,4 @@ app/.cxx/
 /PLAN.md
 /PRD.md
 app/src/androidTest/
+.done/
