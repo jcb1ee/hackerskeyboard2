@@ -18,7 +18,6 @@ package kr.jcb1ee.hackerskeyboard2;
 
 import kr.jcb1ee.hackerskeyboard2.LatinIMEUtil.RingCharBuffer;
 
-import com.google.android.voiceime.VoiceRecognitionTrigger;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -234,6 +233,7 @@ public class LatinIME extends InputMethodService implements
     private int mCorrectionMode;
     private boolean mEnableVoice = true;
     private boolean mVoiceOnPrimary;
+    private String mPendingVoiceText = null;
     private int mOrientation;
     private List<CharSequence> mSuggestPuncList;
     // Keep track of the last selection range to decide if we need to show word
@@ -289,7 +289,6 @@ public class LatinIME extends InputMethodService implements
     private PluginManager mPluginManager;
     private NotificationReceiver mNotificationReceiver;
 
-    private VoiceRecognitionTrigger mVoiceRecognitionTrigger;
 
     public abstract static class WordAlternatives {
         protected CharSequence mChosenWord;
@@ -405,8 +404,6 @@ public class LatinIME extends InputMethodService implements
         mVolDownAction = prefs.getString(PREF_VOL_DOWN, res.getString(R.string.default_vol_down));
         sKeyboardSettings.initPrefs(prefs, res);
 
-        mVoiceRecognitionTrigger = new VoiceRecognitionTrigger(this);
-        
         updateKeyboardOptions();
 
         PluginManager.getPluginDictionaries(getApplicationContext());
@@ -436,6 +433,9 @@ public class LatinIME extends InputMethodService implements
         IntentFilter filter = new IntentFilter(
                 AudioManager.RINGER_MODE_CHANGED_ACTION);
         ContextCompat.registerReceiver(this, mReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
+
+        IntentFilter voiceFilter = new IntentFilter(VoiceInputActivity.ACTION_VOICE_RESULT);
+        ContextCompat.registerReceiver(this, mVoiceResultReceiver, voiceFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
         prefs.registerOnSharedPreferenceChangeListener(this);
         setNotification(mKeyboardNotification);
     }
@@ -647,6 +647,16 @@ public class LatinIME extends InputMethodService implements
         orig.updateConfiguration(conf, orig.getDisplayMetrics());
     }
 
+    private void startVoiceInput() {
+        android.content.Intent intent = new android.content.Intent(this, VoiceInputActivity.class);
+        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (mLanguageSwitcher != null) {
+            String lang = mLanguageSwitcher.getInputLanguage();
+            if (lang != null) intent.putExtra(VoiceInputActivity.EXTRA_LANGUAGE, lang);
+        }
+        startActivity(intent);
+    }
+
     @Override
     public void onDestroy() {
         if (mUserDictionary != null) {
@@ -656,6 +666,7 @@ public class LatinIME extends InputMethodService implements
         //    mContactsDictionary.close();
         //}
         unregisterReceiver(mReceiver);
+        unregisterReceiver(mVoiceResultReceiver);
         unregisterReceiver(mPluginManager);
         if (mNotificationReceiver != null) {
         	unregisterReceiver(mNotificationReceiver);
@@ -763,6 +774,25 @@ public class LatinIME extends InputMethodService implements
     }
     
     @Override
+    public void onStartInput(EditorInfo attribute, boolean restarting) {
+        super.onStartInput(attribute, restarting);
+        if (mPendingVoiceText != null) {
+            // Post so the InputConnection is fully bound before we write to it.
+            // Do NOT clear mPendingVoiceText here: if the IC is still null (e.g. this
+            // onStartInput was triggered by VoiceInputActivity regaining focus rather
+            // than the target editor), we leave the text for the next onStartInput call.
+            new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                if (mPendingVoiceText == null) return; // already committed by a concurrent post
+                android.view.inputmethod.InputConnection ic = getCurrentInputConnection();
+                if (ic != null) {
+                    ic.commitText(mPendingVoiceText, 1);
+                    mPendingVoiceText = null;
+                }
+            });
+        }
+    }
+
+    @Override
     public void onStartInputView(EditorInfo attribute, boolean restarting) {
         sKeyboardSettings.editorPackageName = attribute.packageName;
         sKeyboardSettings.editorFieldName = attribute.fieldName;
@@ -803,10 +833,6 @@ public class LatinIME extends InputMethodService implements
         mEnableVoiceButton = shouldShowVoiceButton(attribute);
         final boolean enableVoiceButton = mEnableVoiceButton && mEnableVoice;
 
-        if (mVoiceRecognitionTrigger != null) {
-            mVoiceRecognitionTrigger.onStartInputView();
-        }
-        
         mInputTypeNoAutoCorrect = false;
         mPredictionOnForMode = false;
         mCompletionOn = false;
@@ -2071,10 +2097,7 @@ public class LatinIME extends InputMethodService implements
             toggleLanguage(false, false);
             break;
         case LatinKeyboardView.KEYCODE_VOICE:
-            if (mVoiceRecognitionTrigger.isInstalled()) {
-                mVoiceRecognitionTrigger.startVoiceRecognition();
-            }
-            //startListening(false /* was a button press, was not a swipe */);
+            startVoiceInput();
             break;
         case 9 /* Tab */:
             if (processMultiKey(primaryCode)) {
@@ -3313,6 +3336,19 @@ public class LatinIME extends InputMethodService implements
         @Override
         public void onReceive(Context context, Intent intent) {
             updateRingerMode();
+        }
+    };
+
+    // receive voice recognition results from VoiceInputActivity
+    private BroadcastReceiver mVoiceResultReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String text = intent.getStringExtra(VoiceInputActivity.EXTRA_VOICE_TEXT);
+            if (text != null && !text.isEmpty()) {
+                // InputConnection may still be null while focus transitions back from
+                // VoiceInputActivity. Store the text and commit it in onStartInputView.
+                mPendingVoiceText = text;
+            }
         }
     };
 
