@@ -203,6 +203,7 @@ public class InputLanguageSelection extends AppCompatActivity {
             PreferenceGroup parent = getPreferenceScreen();
             for (int i = 0; i < mAvailableLanguages.size(); i++) {
                 CheckBoxPreference pref = new CheckBoxPreference(requireContext());
+                pref.setIconSpaceReserved(false);
                 Locale locale = mAvailableLanguages.get(i).locale;
                 pref.setTitle(mAvailableLanguages.get(i).label +
                         " [" + locale.toString() + "]");

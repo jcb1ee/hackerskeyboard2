@@ -15,9 +15,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    	xmlns:hk="http://schemas.android.com/apk/res-auto"
+        xmlns:hk="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:title="@string/english_ime_settings"
-        android:key="english_ime_settings">
+        android:key="english_ime_settings"
+        app:iconSpaceReserved="false">
 
     <PreferenceCategory
             android:title="@string/title_keyboard_view_settings"

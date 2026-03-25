@@ -15,9 +15,11 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    	xmlns:hk="http://schemas.android.com/apk/res-auto"
+        xmlns:hk="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:title="@string/pref_screen_feedback_title"
-        android:key="feedback_settings">
+        android:key="feedback_settings"
+        app:iconSpaceReserved="false">
 
     <CheckBoxPreference
             android:key="vibrate_on"

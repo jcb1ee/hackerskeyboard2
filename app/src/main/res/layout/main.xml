@@ -1,46 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent" android:layout_height="match_parent"
-	android:orientation="vertical">
-	<!--
-	  <TextView android:layout_height="wrap_content" android:id="@+id/main_intro"
-		  android:text="@string/english_ime_name" android:layout_width="wrap_content"
-		  android:textStyle="bold" android:textSize="25sp"></TextView>
-	-->
-	<TableLayout android:layout_width="match_parent"
-		android:id="@+id/main_linear1" android:layout_height="wrap_content">
-		<TableRow>
-			<Button android:text="@string/main_setup_configure_imes"
-				android:id="@+id/main_setup_btn_configure_imes"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-			<Button android:text="@string/main_setup_input_lang"
-				android:id="@+id/main_setup_btn_input_lang"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-		</TableRow>
-		<TableRow>
-			<Button android:text="@string/main_setup_set_ime"
-				android:id="@+id/main_setup_btn_set_ime"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-			<Button android:text="@string/main_setup_get_dicts"
-				android:id="@+id/main_setup_btn_get_dicts"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-		</TableRow>
-		<TableRow>
-			<Button android:text="@string/main_setup_settings"
-				android:id="@+id/main_setup_btn_settings"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-			<EditText android:text="@string/main_setup_test"
-				android:id="@+id/main_setup_edit_test"
-				android:layout_width="fill_parent"
-				android:gravity="center"
-				android:layout_height="wrap_content" />
-		</TableRow>
-	</TableLayout>
-	<TextView android:layout_height="wrap_content" android:id="@+id/main_description"
-		android:layout_width="wrap_content" />
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/setup_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="24dp">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/icon"
+                android:padding="8dp"
+                android:background="@drawable/setup_icon_border"
+                android:contentDescription="@string/english_ime_name" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/english_ime_name"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/setup_text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Power keyboard for developers"
+                    android:textSize="14sp"
+                    android:textColor="@color/setup_text_secondary"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Section: Setup -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SETUP"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="@color/setup_text_secondary"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Step 1: Enable Keyboard -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/setup_text_muted"
+            app:cardBackgroundColor="@color/setup_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:text="1"
+                        android:textColor="@color/setup_on_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="@drawable/setup_step_badge" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/main_setup_configure_imes"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/setup_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to system input methods"
+                            android:textSize="13sp"
+                            android:textColor="@color/setup_text_secondary"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/main_setup_btn_configure_imes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_setup_configure_imes"
+                    android:layout_marginTop="12dp"
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Step 2: Set Input Method -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/setup_text_muted"
+            app:cardBackgroundColor="@color/setup_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:text="2"
+                        android:textColor="@color/setup_on_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="@drawable/setup_step_badge" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/main_setup_set_ime"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/setup_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select as your active keyboard"
+                            android:textSize="13sp"
+                            android:textColor="@color/setup_text_secondary"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/main_setup_btn_set_ime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_setup_set_ime"
+                    android:layout_marginTop="12dp"
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Step 3: Input Languages -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/setup_text_muted"
+            app:cardBackgroundColor="@color/setup_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:text="3"
+                        android:textColor="@color/setup_on_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="@drawable/setup_step_badge" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/main_setup_input_lang"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/setup_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Choose keyboard layouts and languages"
+                            android:textSize="13sp"
+                            android:textColor="@color/setup_text_secondary"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/main_setup_btn_input_lang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_setup_input_lang"
+                    android:layout_marginTop="12dp"
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Settings -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_setup_btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/main_setup_settings"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:cornerRadius="8dp" />
+
+        <!-- Section: Test -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRY IT OUT"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="@color/setup_text_secondary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="10dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/setup_text_muted"
+            app:cardBackgroundColor="@color/setup_surface">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Tap here to test the keyboard"
+                android:padding="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/main_setup_edit_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="flagNoFullscreen" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Version info -->
+        <TextView
+            android:id="@+id/main_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/setup_text_muted" />
+
+    </LinearLayout>
+</ScrollView>

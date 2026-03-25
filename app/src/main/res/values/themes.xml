@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Used by settings/preference activities (keeps action bar for back navigation) -->
+    <style name="Theme.HackersKeyboard.Settings" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/setup_primary</item>
+        <item name="colorOnPrimary">@color/setup_on_primary</item>
+        <item name="android:colorBackground">@color/setup_bg</item>
+        <item name="colorSurface">@color/setup_surface</item>
+        <item name="colorOnSurface">@color/setup_text_primary</item>
+        <item name="colorOnBackground">@color/setup_text_primary</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="Theme.HackersKeyboard.Main" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/setup_primary</item>
+        <item name="colorOnPrimary">@color/setup_on_primary</item>
+        <item name="android:colorBackground">@color/setup_bg</item>
+        <item name="colorSurface">@color/setup_surface</item>
+        <item name="colorOnSurface">@color/setup_text_primary</item>
+        <item name="colorOnBackground">@color/setup_text_primary</item>
+    </style>
+</resources>

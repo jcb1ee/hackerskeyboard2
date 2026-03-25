@@ -90,9 +90,18 @@ public class LatinIMESettings extends AppCompatActivity {
             }
         }
 
+        private static void removeIconSpace(PreferenceGroup group) {
+            for (int i = 0; i < group.getPreferenceCount(); i++) {
+                androidx.preference.Preference p = group.getPreference(i);
+                p.setIconSpaceReserved(false);
+                if (p instanceof PreferenceGroup) removeIconSpace((PreferenceGroup) p);
+            }
+        }
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.prefs);
+            removeIconSpace(getPreferenceScreen());
             mQuickFixes = (CheckBoxPreference) findPreference(QUICK_FIXES_KEY);
             mVoicePreference = (ListPreference) findPreference(VOICE_SETTINGS_KEY);
             mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);

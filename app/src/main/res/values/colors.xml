@@ -34,7 +34,16 @@
     <color name="latinkeyboard_key_color_white">#FFFFFFFF</color>
     <color name="latinkeyboard_key_color_black">#FF000000</color>
 
-<!--Material Keyboard Colors-->
+<!-- Setup screen semantic colors (light mode) -->
+    <color name="setup_primary">#18181B</color>
+    <color name="setup_on_primary">#FFFFFF</color>
+    <color name="setup_bg">#F4F4F5</color>
+    <color name="setup_surface">#FFFFFF</color>
+    <color name="setup_text_primary">#18181B</color>
+    <color name="setup_text_secondary">#71717A</color>
+    <color name="setup_text_muted">#A1A1AA</color>
+
+    <!--Material Keyboard Colors-->
     <color name="key_background_material_black">#000000</color>
     <color name="key_background_pressed_material_black">#19FFFFFF</color>
     <color name="key_text_color_material_black">#CCFFFFFF</color>

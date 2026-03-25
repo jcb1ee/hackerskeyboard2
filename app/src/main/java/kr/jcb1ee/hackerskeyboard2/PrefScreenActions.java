@@ -36,6 +36,15 @@ public class PrefScreenActions extends AppCompatActivity {
     public static class SettingsFragment extends PreferenceFragmentCompat
             implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+        private static void removeIconSpace(androidx.preference.PreferenceGroup group) {
+            for (int i = 0; i < group.getPreferenceCount(); i++) {
+                androidx.preference.Preference p = group.getPreference(i);
+                p.setIconSpaceReserved(false);
+                if (p instanceof androidx.preference.PreferenceGroup)
+                    removeIconSpace((androidx.preference.PreferenceGroup) p);
+            }
+        }
+
         @Override
         public void onDisplayPreferenceDialog(androidx.preference.Preference preference) {
             if (preference instanceof SeekBarPreference) {
@@ -51,6 +60,7 @@ public class PrefScreenActions extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.prefs_actions);
+            removeIconSpace(getPreferenceScreen());
             SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
             prefs.registerOnSharedPreferenceChangeListener(this);
         }
