@@ -7,8 +7,8 @@ android {
         applicationId 'kr.jcb1ee.hackerskeyboard2'
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 1041001
-        versionName "v1.41.1"
+        versionCode 2000000
+        versionName "v2.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -42,6 +42,21 @@ android {
         checkReleaseBuilds false
     }
 }
+
+task generateVersionResource {
+    def versionName = android.defaultConfig.versionName
+    def outFile = file("src/main/res/values/auto-version.xml")
+    outputs.file outFile
+    doLast {
+        outFile.text = """<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto-generated file, do not edit -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+   <string name="auto_version">${versionName}</string>
+</resources>
+"""
+    }
+}
+preBuild.dependsOn generateVersionResource
 
 configurations.all {
     resolutionStrategy.eachDependency { details ->

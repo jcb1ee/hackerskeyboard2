@@ -25,7 +25,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.AutoText;
@@ -148,22 +147,8 @@ public class LatinIMESettings extends AppCompatActivity {
             String version = "";
             try {
                 PackageInfo info = requireActivity().getPackageManager().getPackageInfo(
-                        requireActivity().getPackageName(), PackageManager.GET_SIGNATURES);
+                        requireActivity().getPackageName(), 0);
                 version = info.versionName;
-                boolean isOfficial = false;
-                for (Signature sig : info.signatures) {
-                    byte[] b = sig.toByteArray();
-                    int out = 0;
-                    for (int i = 0; i < b.length; ++i) {
-                        int pos = i % 4;
-                        out ^= b[i] << (pos * 4);
-                    }
-                    if (out == -466825) {
-                        isOfficial = true;
-                    }
-                    //version += " [" + Integer.toHexString(out) + "]";
-                }
-                version += isOfficial ? " official" : " custom";
             } catch (PackageManager.NameNotFoundException e) {
                 Log.e(TAG, "Could not find version info.");
             }

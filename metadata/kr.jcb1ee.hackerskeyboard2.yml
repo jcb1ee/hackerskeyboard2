@@ -24,14 +24,14 @@ Description: |-
   keyboard, updated for Android 5–14 (API 21–34).
 
 Builds:
-  - versionName: v1.41.1
-    versionCode: 1041001
+  - versionName: v2.0.0
+    versionCode: 2000000
     # TODO: replace with the actual git tag or commit hash
-    commit: v1.41.1
+    commit: v2.0.0
     gradle:
       - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: v1.41.1
-CurrentVersionCode: 1041001
+CurrentVersion: v2.0.0
+CurrentVersionCode: 2000000
