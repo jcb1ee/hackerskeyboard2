@@ -1,3 +1,0 @@
-/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/x86_64/CMakeFiles/jni_pckeyboard.dir
-/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/x86_64/CMakeFiles/edit_cache.dir
-/Users/jl/Developer/hackerskeyboard2/app/.cxx/Debug/6xt2i1hj/x86_64/CMakeFiles/rebuild_cache.dir
