@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Setup screen semantic colors (dark mode overrides) -->
-    <color name="setup_primary">#E4E4E7</color>
-    <color name="setup_on_primary">#18181B</color>
-    <color name="setup_bg">#09090B</color>
-    <color name="setup_surface">#18181B</color>
-    <color name="setup_text_primary">#FAFAFA</color>
-    <color name="setup_text_secondary">#A1A1AA</color>
-    <color name="setup_text_muted">#71717A</color>
+    <color name="setup_primary">#3E5C76</color>
+    <color name="setup_on_primary">#F0EBD8</color>
+    <color name="setup_bg">#0D1321</color>
+    <color name="setup_surface">#1D2D44</color>
+    <color name="setup_text_primary">#F0EBD8</color>
+    <color name="setup_text_secondary">#748CAB</color>
+    <color name="setup_text_muted">#3E5C76</color>
 </resources>

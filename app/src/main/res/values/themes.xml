@@ -4,6 +4,11 @@
     <style name="Theme.HackersKeyboard.Settings" parent="Theme.MaterialComponents.DayNight">
         <item name="colorPrimary">@color/setup_primary</item>
         <item name="colorOnPrimary">@color/setup_on_primary</item>
+        <item name="colorSecondary">@color/setup_text_secondary</item>
+        <item name="colorOnSecondary">@color/setup_on_primary</item>
+        <item name="colorAccent">@color/setup_text_secondary</item>
+        <item name="colorControlActivated">@color/setup_text_secondary</item>
+        <item name="colorControlNormal">@color/setup_text_muted</item>
         <item name="android:colorBackground">@color/setup_bg</item>
         <item name="colorSurface">@color/setup_surface</item>
         <item name="colorOnSurface">@color/setup_text_primary</item>
