@@ -38,7 +38,7 @@ public class Main extends AppCompatActivity {
 
         final Button setup1 = findViewById(R.id.main_setup_btn_configure_imes);
         setup1.setOnClickListener(v ->
-            startActivityForResult(new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS), 0)
+            startActivity(new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS))
         );
 
         final EditText hiddenInput = findViewById(R.id.main_hidden_input);
@@ -53,12 +53,12 @@ public class Main extends AppCompatActivity {
 
         final Button setup4 = findViewById(R.id.main_setup_btn_input_lang);
         setup4.setOnClickListener(v ->
-            startActivityForResult(new Intent(this, InputLanguageSelection.class), 0)
+            startActivity(new Intent(this, InputLanguageSelection.class))
         );
 
         final Button setup5 = findViewById(R.id.main_setup_btn_settings);
         setup5.setOnClickListener(v ->
-            startActivityForResult(new Intent(this, LatinIMESettings.class), 0)
+            startActivity(new Intent(this, LatinIMESettings.class))
         );
     }
 }
