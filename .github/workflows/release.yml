@@ -25,11 +25,11 @@ jobs:
 
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release-hackerskeyboard2.jks
 
       - name: Build release APK
         env:
-          KEYSTORE_PATH: release.jks
+          KEYSTORE_PATH: release-hackerskeyboard2.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
