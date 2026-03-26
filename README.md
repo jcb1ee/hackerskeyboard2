@@ -27,22 +27,6 @@ Romanian, Russian (Русский, standard and phonetic), Serbian (Српски
 Spanish (Español, Latinoamérica), Swedish (Svenska), Tamil (தமிழ்), Thai (ไทย), Turkish, Ukrainian,
 Carpalx English (en-CX), Dvorak English (en-DV), and more.
 
-### Building
-
-```bash
-./gradlew assembleDebug
-```
-
-For a signed release build, set the following environment variables before running `assembleRelease`:
-
-```bash
-export KEYSTORE_PATH=/path/to/release.jks
-export KEYSTORE_PASSWORD=...
-export KEY_ALIAS=hackerskeyboard2
-export KEY_PASSWORD=...
-./gradlew assembleRelease
-```
-
 ### License
 
 Apache License 2.0. See [LICENSE](LICENSE).
