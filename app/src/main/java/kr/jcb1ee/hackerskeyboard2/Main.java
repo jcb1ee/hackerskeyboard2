@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,10 +41,14 @@ public class Main extends AppCompatActivity {
             startActivityForResult(new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS), 0)
         );
 
+        final EditText hiddenInput = findViewById(R.id.main_hidden_input);
+
         final Button setup2 = findViewById(R.id.main_setup_btn_set_ime);
         setup2.setOnClickListener(v -> {
             InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            mgr.showInputMethodPicker();
+            hiddenInput.requestFocus();
+            mgr.showSoftInput(hiddenInput, InputMethodManager.SHOW_FORCED);
+            hiddenInput.post(() -> mgr.showInputMethodPicker());
         });
 
         final Button setup4 = findViewById(R.id.main_setup_btn_input_lang);

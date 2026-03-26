@@ -33,6 +33,7 @@
     <color name="latinkeyboard_feedback_language_text">#FFFFFFFF</color>
     <color name="latinkeyboard_key_color_white">#FFFFFFFF</color>
     <color name="latinkeyboard_key_color_black">#FF000000</color>
+    <color name="ic_launcher_background">#000000</color>
 
 <!-- Setup screen semantic colors (light mode) -->
     <color name="setup_primary">#1D2D44</color>

@@ -15,6 +15,14 @@
         android:paddingTop="32dp"
         android:paddingBottom="32dp">
 
+        <EditText
+            android:id="@+id/main_hidden_input"
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:alpha="0"
+            android:importantForAccessibility="no"
+            android:inputType="text" />
+
         <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"

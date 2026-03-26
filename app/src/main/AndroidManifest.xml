@@ -26,7 +26,8 @@
             android:restoreAnyVersion="true"
             android:hardwareAccelerated="false"
             android:killAfterRestore="false"
-            android:icon="@drawable/icon">
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher">
 
         <service android:name="LatinIME"
                 android:label="@string/english_ime_name"
