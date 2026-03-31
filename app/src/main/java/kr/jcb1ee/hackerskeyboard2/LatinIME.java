@@ -748,8 +748,6 @@ public class LatinIME extends InputMethodService implements
             mCandidateView.setPadding(0, 0, 0, 0);
             mCandidateView.setService(this);
             setCandidatesView(mCandidateViewContainer);
-            setCandidatesViewShown(isCandidateStripVisible());
-            updateFullscreenMode();
         }
         return mCandidateViewContainer;
     }
@@ -792,8 +790,6 @@ public class LatinIME extends InputMethodService implements
                 }
             });
         }
-        setCandidatesViewShownInternal(isCandidateStripVisible(), false);
-        hideWindow();
     }
 
     @Override
